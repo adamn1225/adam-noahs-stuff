@@ -94,11 +94,11 @@ export default function Hero() {
               View My Work
               <motion.span
                 className="inline-block ml-2"
-                initial={{ x: 0 }}
-                whileHover={{ x: 5 }}
+                initial={{ y: 0 }}
+                whileHover={{ y: 3 }}
                 transition={{ duration: 0.2 }}
               >
-                →
+                ↓
               </motion.span>
             </motion.a>
 

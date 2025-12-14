@@ -1,8 +1,11 @@
 'use client';
 
 import { motion } from 'motion/react';
+import { useState } from 'react';
+import ContactModal from './ContactModal';
 
 export default function Contact() {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   return (
     <section id="contact" className="py-24 px-6">
       <div className="max-w-4xl mx-auto">
@@ -28,17 +31,17 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <motion.a
-              href="mailto:your-email@example.com"
+            <motion.button
+              onClick={() => setIsContactModalOpen(true)}
               className="group px-8 py-4 bg-primary text-neutral-900 rounded-lg font-semibold text-lg hover:bg-primary/90 transition-all duration-300 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 flex items-center gap-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
               Send Email
-            </motion.a>
+            </motion.button>
 
             <motion.a
               href="https://github.com/yourusername"
@@ -69,6 +72,11 @@ export default function Contact() {
             </motion.a>
           </motion.div>
         </motion.div>
+
+        <ContactModal 
+          isOpen={isContactModalOpen} 
+          onClose={() => setIsContactModalOpen(false)} 
+        />
       </div>
     </section>
   );
